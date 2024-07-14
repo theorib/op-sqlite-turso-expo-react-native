@@ -2,13 +2,14 @@ import React from 'react';
 import { Text, View, FlatList, StyleSheet, ScrollView } from 'react-native';
 import { openRemote, openSync } from '@op-engineering/op-sqlite';
 
-type lights = {
+type Ligth = {
   id: number;
   name: string;
-  output: number;
+  output: string;
   image: string | null;
 };
-let lights: lights[] = [];
+let lights: Ligth[] = [];
+
 try {
   const syncDb = openSync({
     name: 'myDb.sqlite',
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
 });
 
 export default function Index() {
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item }: { item: Ligth }) => (
     <View style={styles.item}>
       <Text style={styles.title}>{item.name}</Text>
       <Text>ID: {item.id}</Text>
@@ -83,7 +84,7 @@ export default function Index() {
           <FlatList
             data={lights}
             renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={item => `${item.id}-id`}
             scrollEnabled={false}
           />
         ) : (
