@@ -1,50 +1,55 @@
-# Welcome to your Expo app 👋
+# Debugging op-sqlite with libsql
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Description
 
-## Get started
+All this project is doing is connecting to a turso database and displaying the data from a `lights` table in a list. If there is an error it's being logged to the console and an error message appears on the app's ui.
 
-1. Install dependencies
+This project assumes you have the expo cli, x-code, and ios simulator installed.
 
-   ```bash
-   npm install
-   ```
+## Steps to make this project work:
 
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+### 1. install dependencies
 
 ```bash
-npm run reset-project
+pnpm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### 2. Create a new turso database and populate it:
 
-## Learn more
+1. If you don't have it already, begin by installing the Turso CLI:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+brew install tursodatabase/tap/turso
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+2. Authenticate or create a new account with Turso
 
-## Join the community
+```bash
+turso auth signup
+```
 
-Join our community of developers creating universal apps.
+3. Create a database from the included sql dump file
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+turso db create op-sqlite-libsql-test --from-dump ./dbDump/dump.sql
+```
+
+4. Get your new database URL
+
+```bash
+turso db show op-sqlite-libsql-test
+```
+
+5. Get an authentication token for the database
+
+```bash
+turso db tokens create op-sqlite-libsql-test
+```
+
+6. Rename the `sample.env` file in the root of this project folder to `.env` and replate the value of the environment variables with the URL and authentication token you got form the previous two steps
+
+### 3. Create a project build and run it in your ios simulator
+
+```bash
+pnpm expo run:ios
+```
