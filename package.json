@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "test": "jest --watchAll",
     "lint": "expo lint",
-    "pod": "pnpm dlx pod-install"
+    "pod": "pnpm dlx pod-install",
+    "prebuild": "pod install --repo-update"
   },
   "jest": {
     "preset": "jest-expo"
@@ -22,6 +23,7 @@
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.20",
     "expo-constants": "~16.0.2",
+    "expo-dev-client": "~4.0.20",
     "expo-font": "~12.0.8",
     "expo-linking": "~6.3.1",
     "expo-router": "~3.5.18",

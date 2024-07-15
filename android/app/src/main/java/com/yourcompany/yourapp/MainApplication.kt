@@ -1,4 +1,4 @@
-package com.theoribeiro.opsqliteexpotursotest
+package com.yourcompany.yourapp
 
 import android.app.Application
 import android.content.res.Configuration
