@@ -11,7 +11,7 @@
     "test": "jest --watchAll",
     "lint": "expo lint",
     "pod": "pnpm dlx pod-install",
-    "prebuild": "pod install --repo-update"
+    "prebuild": "pnpm dlx expo prebuild"
   },
   "jest": {
     "preset": "jest-expo"
