@@ -1,29 +1,26 @@
-# Testing op-sqlite with Turso in a React Native/Expo project
+# Testing op-sqlite with Turso on an Expo/React Native project
 
 ## Description
 
-This projects is a test ground for connecting a [Turso](https://turso.tech) database to a [React Native/Expo](https://docs.expo.dev) project using [op-sqlite](https://github.com/OP-Engineering/op-sqlite) with [libsql](https://github.com/tursodatabase/libsql) using [Turso's embedded replicas](https://docs.turso.tech/features/embedded-replicas/introduction).
+This projects is a test ground for connecting a [Turso](https://turso.tech) database to an [Expo/React Native](https://docs.expo.dev) project using [op-sqlite](https://github.com/OP-Engineering/op-sqlite) (set up to use [libsql](https://ospfranco.notion.site/Libsql-Support-c56ac2afb939460182ee7bd910b08fbf) as the database source) leveraging Turso's [embedded replicas](https://docs.turso.tech/features/embedded-replicas/introduction).
+
+Turso's embedded replicas allow database reads to always happen from a locally installed SQLite database providing very fast reads while writes always happen to the remote database and are then automatically synced to a local replica.
 
 The main `index.tsx` file allows for displaying, adding and deleting data from the database.
 
 ## System dependencies
 
-This project assumes you have installed:
+This project assumes you have an Expo/React Native development environment already. If you don't, you can follow the relevant steps below:
 
-- If you are on a Mac and want to create iOS builds, you will need x-code and an ios simulator installed and configured:
-  - You will likelly need [Homebrew](https://brew.sh) to manage packages in your Mac.
-  - Follow [this guide](https://docs.expo.dev/get-started/set-up-your-environment/?platform=ios&device=simulated&mode=development-build&buildEnv=local) to install and configure x-code, the iOS simulator and watchman
-- To create Android builds, you will need Android Studio with an emulator:
-
-  - Follow [this guide](https://docs.expo.dev/get-started/set-up-your-environment/?platform=android&device=simulated&mode=development-build&buildEnv=local) to install and configure OpenJDK, Android Studio, and an emulator, there are steps to follow for both Mac and Windows users.
-
-- The [expo cli](https://docs.expo.dev/more/expo-cli/)
-
-You can find extra info on local builds on [Expo's documentation](https://docs.expo.dev/guides/local-app-development/)
+- Install [Node.js](https://nodejs.org/en/) LTS version
+- Install [Expo command line tools](https://docs.expo.dev/more/expo-cli/)
+- For Android builds follow [this guide](https://docs.expo.dev/get-started/set-up-your-environment/?platform=android&device=simulated&mode=development-build&buildEnv=local) to install and configure OpenJDK, Android Studio, and an Android Emulator
+- For iOS buids (Mac users only), follow [this guide](https://docs.expo.dev/get-started/set-up-your-environment/?platform=ios&device=simulated&mode=development-build&buildEnv=local) to install and configure Xcode, an iOS simulator and [watchman](https://facebook.github.io/watchman/docs/install#macos)
+  - You will likely need [Homebrew](https://brew.sh) to manage packages in your Mac.
 
 ## Steps to make this project work:
 
-You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example.
+You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example. But you can replace any `pnpm` calls with `npm` or `yarn`. If you do, also make sure to replace any `pnpm dlx` with `npx` on the project's `package.json`.
 
 ### 1. install dependencies
 
@@ -70,4 +67,10 @@ turso db tokens create op-sqlite-libsql-test
 ```bash
 pnpm expo run:ios
 pnpm expo run:android
+```
+
+### 4. To start the project at any time run
+
+```bash
+pnpm start
 ```
