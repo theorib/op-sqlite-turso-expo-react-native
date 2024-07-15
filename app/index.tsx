@@ -49,13 +49,11 @@ const addNewLight = (): Light => {
     'INSERT INTO lights (id, name, output, image) VALUES (?, ?, ?, ?)',
     [newLight.id, newLight.name, newLight.output, newLight.image]
   );
-  syncDb.sync();
   return newLight;
 };
 
 const deleteLightById = (id: string) => {
   syncDb.execute('DELETE FROM lights WHERE id = ?', [id]);
-  syncDb.sync();
 };
 
 const styles = StyleSheet.create({
@@ -129,7 +127,7 @@ export default function Index() {
 
   const handleDeleteLight = () => {
     if (lights.length > 0) {
-      const lastLight = lights[lights.length - 1];
+      const lastLight = lights[0];
       deleteLightById(lastLight.id);
       setLights(lights => lights.slice(1));
     }
