@@ -74,3 +74,11 @@ pnpm expo run:android
 ```bash
 pnpm start
 ```
+
+## Extra info
+
+This projects uses a nearly "vanilla" installation of Expo with very few changes. Most notably:
+
+- [op-sqlite](https://github.com/OP-Engineering/op-sqlite) is installed as a dependency since this is what we are testing
+- [faker-js](https://fakerjs.dev/) is installed to provide mock data
+- [expo-dev-client](https://docs.expo.dev/versions/latest/sdk/dev-client/) to allow for Expo custom builds (necessary when using op-sqlite)
