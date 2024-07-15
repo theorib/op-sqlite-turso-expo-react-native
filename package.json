@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
+    "@faker-js/faker": "^8.4.1",
     "@op-engineering/op-sqlite": "^6.2.11",
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.20",
