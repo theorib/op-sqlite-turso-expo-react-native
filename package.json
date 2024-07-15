@@ -9,14 +9,15 @@
     "ios": "expo run:ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "lint": "expo lint"
+    "lint": "expo lint",
+    "pod": "pnpm dlx pod-install"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
-    "@op-engineering/op-sqlite": "^6.1.4",
+    "@op-engineering/op-sqlite": "^6.2.11",
     "@react-navigation/native": "^6.0.2",
     "expo": "~51.0.20",
     "expo-constants": "~16.0.2",

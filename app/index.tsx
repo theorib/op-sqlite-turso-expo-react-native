@@ -16,7 +16,9 @@ try {
     url: process.env.EXPO_PUBLIC_TURSO_DATABASE_URL!,
     authToken: process.env.EXPO_PUBLIC_TURSO_AUTH_TOKEN!,
   });
+  syncDb.sync();
   const syncData = syncDb.execute('SELECT * FROM lights');
+
   lights = syncData?.rows?._array || [];
 
   // const remoteDb = openRemote({
