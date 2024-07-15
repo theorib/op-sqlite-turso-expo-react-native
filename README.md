@@ -22,10 +22,10 @@ This project assumes you have an Expo/React Native development environment alrea
 
 You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example. But you can replace any `pnpm` calls with `npm` or `yarn`. If you do, also make sure to replace any `pnpm dlx` with `npx` on the project's `package.json`.
 
-### 1. Clone or fork the project
+### 1. Clone, download or fork the project
 
 ```bash
-git clone https://github.com/theorib/op-sqlite-expo-turso-test.git
+git clone https://github.com/theorib/op-sqlite-turso-expo-react-native.git
 ```
 
 ### 2. install dependencies
