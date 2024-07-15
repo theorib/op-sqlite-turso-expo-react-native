@@ -22,13 +22,19 @@ This project assumes you have an Expo/React Native development environment alrea
 
 You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example. But you can replace any `pnpm` calls with `npm` or `yarn`. If you do, also make sure to replace any `pnpm dlx` with `npx` on the project's `package.json`.
 
-### 1. install dependencies
+### 1. Clone or fork the project
+
+```bash
+git clone https://github.com/theorib/op-sqlite-expo-turso-test.git
+```
+
+### 2. install dependencies
 
 ```bash
 pnpm install
 ```
 
-### 2. Create a new turso database and populate it:
+### 3. Create a new turso database and populate it:
 
 1. If you don't have it already, begin by installing the Turso CLI:
 
@@ -62,14 +68,14 @@ turso db tokens create op-sqlite-libsql-test
 
 6. Rename the `sample.env` file in the root of this project folder to `.env` and replace the value of the environment variables with the URL and authentication token you got from the previous two steps
 
-### 3. Create a project build and run it in your iOS and Android simulators
+### 4. Create a project build and run it in your iOS or Android simulators
 
 ```bash
 pnpm expo run:ios
 pnpm expo run:android
 ```
 
-### 4. To start the project at any time run
+### 5. Start the project at any time
 
 ```bash
 pnpm start
