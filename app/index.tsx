@@ -5,10 +5,9 @@ import {
   FlatList,
   StyleSheet,
   ScrollView,
-  Button,
   TouchableOpacity,
 } from 'react-native';
-import { openRemote, openSync } from '@op-engineering/op-sqlite';
+import { openSync } from '@op-engineering/op-sqlite';
 import { faker } from '@faker-js/faker';
 
 const syncDb = openSync({
