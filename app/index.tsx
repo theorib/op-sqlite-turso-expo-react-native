@@ -1,5 +1,5 @@
 import { deleteItemById, insertItem } from '@/db/mutations';
-import { selectAllItems } from '@/db/queries';
+import { selectAllItems, selectAllItemsSync } from '@/db/queries';
 import { Item } from '@/db/schema';
 import { createItemData } from '@/db/seedData';
 import React from 'react';
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
 });
 
 export default function Index() {
-  const [items, setLights] = React.useState<Item[]>(() => selectAllItems());
+  const [items, setLights] = React.useState<Item[]>(() => selectAllItemsSync());
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   const handleAddItem = async () => {
@@ -98,10 +98,13 @@ export default function Index() {
     return;
   };
 
-  const handleRefresh = () => {
-    const items = selectAllItems();
+  const handleRefresh = async () => {
+    setIsLoading(true);
+    const items = await selectAllItems();
     setLights(items);
+    setIsLoading(false);
   };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
