@@ -23,10 +23,11 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   header: {
-    fontSize: 24,
+    fontSize: 20,
+    paddingHorizontal: 20,
     fontWeight: 'bold',
     marginBottom: 6,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   item: {
     backgroundColor: '#f9c2ff',
@@ -71,6 +72,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
+  buttonDisabled: {
+    backgroundColor: '#A0A0A0',
+    opacity: 0.7,
+  },
 });
 
 export default function Index() {
@@ -108,24 +113,27 @@ export default function Index() {
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-        <Text style={styles.header}>Items List ({items.length})</Text>
+        <Text style={styles.header}>
+          Items List ({items.length}) -{' '}
+          {!isLoading ? 'Data loaded' : 'Loading data...'}
+        </Text>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, isLoading && styles.buttonDisabled]}
             onPress={handleAddItem}
             disabled={isLoading}
           >
             <Text style={styles.buttonText}>Add</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, isLoading && styles.buttonDisabled]}
             onPress={handleDeleteItem}
             disabled={isLoading}
           >
             <Text style={styles.buttonText}>Delete</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, isLoading && styles.buttonDisabled]}
             onPress={handleRefresh}
             disabled={isLoading}
           >
