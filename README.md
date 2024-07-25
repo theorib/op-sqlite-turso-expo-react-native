@@ -71,8 +71,8 @@ turso db tokens create op-sqlite-libsql-test
 ### 4. Create a project build and run it in your iOS or Android simulators
 
 ```bash
-pnpm expo run:ios
-pnpm expo run:android
+pnpm ios
+pnpm android
 ```
 
 ### 5. Start the project at any time

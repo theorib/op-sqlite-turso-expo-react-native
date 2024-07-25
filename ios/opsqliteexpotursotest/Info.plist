@@ -27,7 +27,14 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
+          <string>myapp</string>
           <string>com.yourcompany.yourapp</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>exp+op-sqlite-expo-turso-test</string>
         </array>
       </dict>
     </array>
