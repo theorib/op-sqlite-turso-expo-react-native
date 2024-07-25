@@ -1,14 +1,45 @@
 # Testing op-sqlite with Turso on an Expo/React Native project
 
+## Table of Contents
+
+1. [Description](#description)
+2. [Supported Platforms](#supported-platforms)
+3. [Prerequisites](#prerequisites)
+4. [Steps to make this project work](#steps-to-make-this-project-work)
+   - [Clone, download or fork the project](#1-clone-download-or-fork-the-project)
+   - [Install dependencies](#2-install-dependencies)
+   - [Create a new turso database and populate it](#3-create-a-new-turso-database-and-populate-it)
+   - [Create a project build and run it](#4-create-a-project-build-and-run-it-in-your-ios-or-android-simulators)
+   - [Start the project](#5-start-the-project-at-any-time)
+5. [Troubleshooting](#troubleshooting)
+6. [Extra info](#extra-info)
+
 ## Description
 
 This projects is a test ground for connecting a [Turso](https://turso.tech) database to an [Expo/React Native](https://docs.expo.dev) project using [op-sqlite](https://github.com/OP-Engineering/op-sqlite) (set up to use [libsql](https://ospfranco.notion.site/Libsql-Support-c56ac2afb939460182ee7bd910b08fbf) as the database source) leveraging Turso's [embedded replicas](https://docs.turso.tech/features/embedded-replicas/introduction).
 
-Turso's embedded replicas allow database reads to always happen from a locally installed SQLite database providing very fast reads while writes always happen to the remote database and are then automatically synced to a local replica.
+Turso's embedded replicas allow database reads to always happen from a locally installed SQLite database providing very fast reads while writes are always sent to the remote database and are then automatically synced to a local replica.
 
-The main `index.tsx` file allows for displaying, adding and deleting data from the database.
+## Project Structure
 
-## System dependencies
+The main `./app/index.tsx` file allows for displaying, adding, deleting and refreshing a list of items from the database. New items are automatically generated for demonstration purposes.
+
+The `db` folder is where most of the op-sqlite code is located. Currently most functions are wrapped in Try/Catch blocks so you can test the code without worrying too much about errors.
+
+- The `./db/index.ts` creates and exports the database client as well as a sync function.
+- The `./db/schema.ts` file currenly mainly contains TypeScript types
+- The `./db/queries.ts` file contains query functions to retrieve data from the database
+- The `./db/mutations.ts` file contains insert and delete functions with versions for op-sqlite's sync and async methods
+- The `./db/seedData.ts` file mainly contains a function to create data on the fly using faker.js
+
+## Suported Platforms
+
+This project was created on a Mac with an M1 chip running MacOS Sonoma 14.5
+
+- For Android builds it should work on most computer that have the correct development environment set up.
+- For iOS builds you will likelly need a Mac.
+
+## Prerequisites
 
 This project assumes you have an Expo/React Native development environment already. If you don't, you can follow the relevant steps below:
 
@@ -79,6 +110,20 @@ pnpm android
 
 ```bash
 pnpm start
+```
+
+## Troubleshooting
+
+If you are running into problems with your iOS build try running a pod install first with
+
+```bash
+pnpm pod
+```
+
+Then
+
+```bash
+pnpm ios
 ```
 
 ## Extra info
