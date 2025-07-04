@@ -34,7 +34,7 @@ The `db` folder is where most of the op-sqlite code is located. Currently most f
 
 ## Suported Platforms
 
-This project was created on a Mac with an M1 chip running MacOS Sonoma 14.5
+This project was created on a Mac with an M1 chip running MacOS Sequoia 15.5.
 
 - For Android builds it should work on most computer that have the correct development environment set up.
 - For iOS builds you will likelly need a Mac.
@@ -51,7 +51,7 @@ This project assumes you have an Expo/React Native development environment alrea
 
 ## Steps to make this project work:
 
-You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example. But you can replace any `pnpm` calls with `npm` or `yarn`. If you do, also make sure to replace any `pnpm dlx` with `npx` on the project's `package.json`.
+You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example. But you can replace any `pnpm` in the scripts section of the project's `package.json` to calls for `npm` or `yarn`. If you do, also make sure to replace any `pnpm dlx` with `npx` (if using `npm`) or `yarn dlx` (if using `yarn`).
 
 ### 1. Clone, download or fork the project
 
@@ -118,12 +118,6 @@ If you are running into problems with your iOS build try running a pod install f
 
 ```bash
 pnpm pod
-```
-
-Then
-
-```bash
-pnpm ios
 ```
 
 ## Extra info
