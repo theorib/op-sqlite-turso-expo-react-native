@@ -1,6 +1,6 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
-CREATE TABLE IF NOT EXISTS `items` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` text, `value` text, `image` text );
+CREATE TABLE IF NOT EXISTS `items` ( `id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` text, `value` integer, `image` text );
 INSERT INTO items (name, value, image) VALUES('Bespoke Plastic Bike','20710','https://via.placeholder.com/600x600/4c078a/b9f7bc.gif?text=aranea%20calamitas%20ascisco');
 INSERT INTO items (name, value, image) VALUES('Recycled Soft Salad','92163','https://via.placeholder.com/600x600/4fc49f/5cee49.webp?text=eius%20vespillo%20confero');
 INSERT INTO items (name, value, image) VALUES('Sleek Wooden Ball','25390','https://via.placeholder.com/600x600/168cca/b1effb.jpg?text=conforto%20calamitas%20speculum');
