@@ -10,11 +10,13 @@ try {
     url: process.env.EXPO_PUBLIC_TURSO_DATABASE_URL!,
     libsqlSyncInterval: 4000,
     authToken: process.env.EXPO_PUBLIC_TURSO_AUTH_TOKEN!,
+    libsqlOffline: true,
+    encryptionKey: process.env.EXPO_PUBLIC_TURSO_ENCRYPTION_KEY!,
   });
 
   // Make the initial sync from the remote to the local database
   db.sync();
-  
+
   // Create the items table if it doesn't exist
   db.execute(`
     CREATE TABLE IF NOT EXISTS items (
