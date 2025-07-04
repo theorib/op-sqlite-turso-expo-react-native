@@ -18,26 +18,34 @@
 
 This projects is a test ground for connecting a [Turso](https://turso.tech) database to an [Expo/React Native](https://docs.expo.dev) project using [op-sqlite](https://github.com/OP-Engineering/op-sqlite) (set up to use [libsql](https://ospfranco.notion.site/Libsql-Support-c56ac2afb939460182ee7bd910b08fbf) as the database source) leveraging Turso's [embedded replicas](https://docs.turso.tech/features/embedded-replicas/introduction).
 
-Turso's embedded replicas allow database reads to always happen from a locally installed SQLite database providing very fast reads while writes are always sent to the remote database and are then automatically synced to a local replica.
+Turso's embedded replicas allow database reads and/or writes to always happen from a local SQLite database first, providing very fast reads and/or writes which are then synced to a remote database.
+
+The project is currently set up to leverage Turso's main features of interest such as:
+
+- Embedded replicas
+- [Offline writes](https://turso.tech/blog/turso-offline-sync-public-beta) with sync
+- Local database [encryption at rest](https://docs.turso.tech/features/embedded-replicas/introduction#encryption-at-rest)
+- [Periodic sync](https://docs.turso.tech/features/embedded-replicas/introduction#periodic-sync)
+- [Read your writes](https://docs.turso.tech/features/embedded-replicas/introduction#read-your-writes)
 
 ## Project Structure
 
-The main `./app/index.tsx` file allows for displaying, adding, deleting and refreshing a list of items from the database. New items are automatically generated for demonstration purposes.
+The main `src/app/index.tsx` file allows for displaying, adding, deleting and refreshing a list of items from the database. New items are automatically generated for demonstration purposes.
 
-The `db` folder is where most of the op-sqlite code is located. Currently most functions are wrapped in Try/Catch blocks so you can test the code without worrying too much about errors.
+The `src/db` folder is where most of the op-sqlite code is located.
 
-- The `./db/index.ts` creates and exports the database client as well as a sync function.
-- The `./db/schema.ts` file currenly mainly contains TypeScript types
-- The `./db/queries.ts` file contains query functions to retrieve data from the database
-- The `./db/mutations.ts` file contains insert and delete functions with versions for op-sqlite's sync and async methods
-- The `./db/seedData.ts` file mainly contains a function to create data on the fly using faker.js
+- The `src/db/index.ts` creates and exports the database client as well as a sync function.
+- The `src/db/schema.ts` file currenly mainly contains TypeScript types
+- The `src/db/queries.ts` file contains query functions to retrieve data from the database
+- The `src/db/mutations.ts` file contains insert and delete functions
+- The `src/db/seedData.ts` file mainly contains a function to create data on the fly using faker.js
 
 ## Suported Platforms
 
 This project was created on a Mac with an M1 chip running MacOS Sequoia 15.5.
 
-- For Android builds it should work on most computer that have the correct development environment set up.
-- For iOS builds you will likelly need a Mac.
+- For Android builds it should work on most computers that have the correct development environment set up.
+- For iOS builds you will likelly need a work on MacOS computer.
 
 ## Prerequisites
 
@@ -53,7 +61,7 @@ This project assumes you have an Expo/React Native development environment alrea
 
 You can use your favorite package manager. I'm using [pnpm](https://pnpm.io) in this example. But you can replace any `pnpm` in the scripts section of the project's `package.json` to calls for `npm` or `yarn`. If you do, also make sure to replace any `pnpm dlx` with `npx` (if using `npm`) or `yarn dlx` (if using `yarn`).
 
-### 1. Clone, download or fork the project
+### 1. Clone, download or fork this repository
 
 ```bash
 git clone https://github.com/theorib/op-sqlite-turso-expo-react-native.git
@@ -97,7 +105,7 @@ turso db show op-sqlite-libsql-test
 turso db tokens create op-sqlite-libsql-test
 ```
 
-6. Rename the `sample.env` file in the root of this project folder to `.env` and replace the value of the environment variables with the URL and authentication token you got from the previous two steps
+6. Rename the `.env.sample` file in the root of this project folder to `.env` and replace the value of the environment variables with the URL and authentication token you got from the previous two steps
 
 ### 4. Create a project build and run it in your iOS or Android simulators
 
@@ -124,6 +132,7 @@ pnpm pod
 
 This projects uses a nearly "vanilla" installation of Expo with very few changes. Most notably:
 
+- [TanStack Query](https://tanstack.com/query/latest) to make data fetching and syncing with Turso more straightforward while handling pending and loading states properly
 - [op-sqlite](https://github.com/OP-Engineering/op-sqlite) is installed as a dependency since this is what we are testing
 - [faker-js](https://fakerjs.dev/) is installed to provide mock data
 - [expo-dev-client](https://docs.expo.dev/versions/latest/sdk/dev-client/) to allow for Expo custom builds (necessary when using op-sqlite)
