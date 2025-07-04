@@ -27,6 +27,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
+          <string>opsqliteexpotursotest</string>
           <string>com.theoribeiro.opsqliteexpotursotest</string>
         </array>
       </dict>
