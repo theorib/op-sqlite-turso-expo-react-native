@@ -3,7 +3,8 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start --dev-client",
+    "start:clear": "expo start --dev-client --clear",
     "expo:doctor": "pnpm dlx expo-doctor@latest",
     "expo:install:fix": "pnpm dlx expo install --fix",
     "reset-project": "node ./scripts/reset-project.js",
