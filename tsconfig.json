@@ -4,12 +4,16 @@
     "strict": true,
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
       ]
     }
   },
   "include": [
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "expoPlugins/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
   ]
 }
