@@ -87,25 +87,31 @@ brew install tursodatabase/tap/turso
 turso auth signup
 ```
 
-3. Create a database from the included sql dump file
+3. Create a new database (replace db-name with the name you want to give to your database)
 
 ```bash
-turso db create op-sqlite-libsql-test --from-dump ./dbDump/dump.sql
+turso db create db-name
 ```
 
-4. Get your new database URL
+4. Seed the database with the included sql dump file
 
 ```bash
-turso db show op-sqlite-libsql-test
+turso db shell db-name < dbDump/dump.sql
 ```
 
-5. Get an authentication token for the database
+5. Get your new database URL
 
 ```bash
-turso db tokens create op-sqlite-libsql-test
+turso db show db-name
 ```
 
-6. Rename the `.env.sample` file in the root of this project folder to `.env` and replace the value of the environment variables with the URL and authentication token you got from the previous two steps
+6. Get an authentication token for the database
+
+```bash
+turso db tokens create db-name
+```
+
+7. Rename the `.env.sample` file in the root of this project folder to `.env` and replace the value of the environment variables with the URL and authentication token you got from the previous two steps
 
 ### 4. Create a project build and run it in your iOS or Android simulators
 
