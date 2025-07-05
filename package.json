@@ -16,7 +16,7 @@
     "pod": "npx expo run:ios",
     "prebuild": "expo prebuild",
     "prebuild:clean": "expo prebuild --clean",
-    "rebuild": "node ./scripts/clear-expo-builds.js && pnpm prebuild:clean && pnpm pod && pnpm ios"
+    "rebuild": "node scripts/clear-expo-builds.js && pnpm prebuild:clean && pnpm pod && pnpm ios"
   },
   "jest": {
     "preset": "jest-expo"
