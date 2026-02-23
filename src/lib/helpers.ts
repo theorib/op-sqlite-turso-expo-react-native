@@ -5,10 +5,8 @@ export const logData = (data: unknown, dataName?: string) => {
 export const logError = function (message: string, error: unknown) {
   let errorMessage: unknown;
   if (error instanceof Error) {
-    errorMessage = new Error(message, {
-      cause: error,
-    });
-    logData(error, message);
+    errorMessage = error.message;
+    logData(error, error.message);
     console.error(error);
   } else {
     logData(error, message);

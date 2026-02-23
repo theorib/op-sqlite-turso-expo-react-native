@@ -5,7 +5,12 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
   slug: 'your-app-your-name',
   version: '1.0.0',
 
-  plugins: ['expo-router', './expoPlugins/withUseThirdPartySQLitePod.js'],
+  plugins: [
+    'expo-router',
+    './expoPlugins/withUseThirdPartySQLitePod.js',
+    'expo-font',
+    'expo-web-browser',
+  ],
 
   orientation: 'portrait',
   icon: './assets/images/icon.png',

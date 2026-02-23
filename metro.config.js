@@ -7,9 +7,7 @@ const config = getDefaultConfig(__dirname);
 config.resolver.platforms = ['ios', 'android', 'native', 'web'];
 
 // Handle pnpm node_modules structure
-config.resolver.nodeModulesPaths = [
-  path.resolve(__dirname, 'node_modules'),
-];
+config.resolver.nodeModulesPaths = [path.resolve(__dirname, 'node_modules')];
 
 // Make sure Metro can handle symlinks properly
 config.resolver.unstable_enableSymlinks = true;

@@ -1,5 +1,5 @@
-import { logError } from '@/lib/helpers';
-import { DB, openRemote, openSync } from '@op-engineering/op-sqlite';
+import { logData, logError } from '@/lib/helpers';
+import { DB, openSync, open } from '@op-engineering/op-sqlite';
 
 let db: DB;
 
@@ -11,7 +11,7 @@ try {
     libsqlSyncInterval: 4000,
     authToken: process.env.EXPO_PUBLIC_TURSO_AUTH_TOKEN!,
     libsqlOffline: true,
-    encryptionKey: process.env.EXPO_PUBLIC_TURSO_ENCRYPTION_KEY!,
+    // encryptionKey: process.env.EXPO_PUBLIC_TURSO_ENCRYPTION_KEY!,
   });
 
   // Make the initial sync from the remote to the local database
@@ -27,6 +27,11 @@ try {
     )
   `);
 } catch (error) {
+  logData({
+    url: process.env.EXPO_PUBLIC_TURSO_DATABASE_URL!,
+    authToken: process.env.EXPO_PUBLIC_TURSO_AUTH_TOKEN!,
+    encryptionKey: process.env.EXPO_PUBLIC_TURSO_ENCRYPTION_KEY!,
+  });
   const updatedError = logError('Error initializing database client', error);
   throw updatedError;
 }
